@@ -1,0 +1,27 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# output folder
+output/
+.DS_Store
+
+# Ignore all contents of the 'content' directory (keep CV data local and privat by default)
+app/content/*
+
+# But do NOT ignore mariecurie_cv.toml
+!app/content/mariecurie_cv.toml
+
+# Ignore all contents of the 'content' directory (keep CV data local and privat by default)
+app/assets/*
+
+# But do NOT ignore mariecurie_cv.toml
+!app/assets/SignatureMarieCurie.toml
+!app/assets/icon_cvgen.svg
