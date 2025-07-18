@@ -10,6 +10,16 @@ dependencies = [
     "toml>=0.10.2",
 ]
 
+[dependency-groups]
+dev = [
+    "pytest>=8.4.1",
+]
+
+[tool.pytest.ini_options]
+markers = [
+    "slow: marks tests as slow to run",
+]
+
 # ==============================================================================
 # Task Runner (Taskipy)
 #
@@ -28,7 +38,6 @@ build = "uv run python -m app.main"
 # - Only runs if the output/ directory exists.
 purge = "uv run python -m app.scripts.clear_output"
 
-[dependency-groups]
-dev = [
-    "pytest>=8.4.1",
-]
+# > uv run task test
+# Runs tests in verbose mode forwarding the generated output
+test = "uv run pytest -sv"
