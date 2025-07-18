@@ -1,0 +1,358 @@
+% ---------------------------------------------------------
+% cv_template.tex.jinja — Master layout for the full CV
+% ---------------------------------------------------------
+
+% ---------------------------------------------------------
+% _preamble.tex.j2 — Sets up LaTeX document, packages, etc.
+% ---------------------------------------------------------
+
+% Use standard article class for simple documents
+\documentclass[letterpaper, 11pt]{article}
+
+% Language and symbols
+\usepackage[english]{babel}
+\usepackage{latexsym}
+
+% Full-page usage with no headers/footers
+\usepackage[empty]{fullpage}
+
+% Section formatting and symbols
+\usepackage{titlesec}
+\usepackage{marvosym}
+
+% Colors and font styling
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{enumitem}
+
+% URL handling
+\usepackage[hidelinks]{hyperref}
+
+% Tables, icons, and typography
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+% Unicode support for PDF output
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+% Page layout tweaks
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Hyperlink color styling
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=linki,
+}
+\urlstyle{same}
+
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+% ---------------------------------------------------------
+% _colors.tex.j2 — Custom color definitions and assignments
+% ---------------------------------------------------------
+
+% Define custom colors using HTML hex or RGB
+\definecolor{cvblue}{HTML}{0E5484}
+\definecolor{black}{HTML}{130810}
+\definecolor{darkcolor}{HTML}{0F4539}
+\definecolor{andreblue}{RGB}{31, 119, 180}
+\definecolor{linki}{HTML}{2020DF}
+
+% Semantic color assignments — tweakable if theme changes
+\colorlet{name}{black}
+\colorlet{tagline}{darkcolor}
+\colorlet{heading}{darkcolor}
+\colorlet{headingrule}{cvblue}
+\colorlet{accent}{darkcolor}
+
+%========================================================================================
+% _macros.tex
+%
+% This file defines all the custom LaTeX commands (macros) used to structure and
+% style the resume.
+%========================================================================================
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION FORMATTING
+%----------------------------------------------------------------------------------------
+% Defines the style for \section headings using the `titlesec` package.
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+
+%----------------------------------------------------------------------------------------
+%	HEADING & ENTRY COMMANDS
+%----------------------------------------------------------------------------------------
+
+% Defines a wrapper environment for a list of entries (e.g., jobs, projects).
+% It creates a clean vertical list with no bullets or indentation.
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+
+% Creates a standard entry for a job, project, or education section.
+% ARGUMENTS: {Title}{Location}{Subtitle/Company}{Dates}{Description list}
+\newcommand{\resumeSubheading}[5]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{@{}p{0.85\textwidth}@{\extracolsep{\fill}}r@{}}
+      \textbf{\normalsize #1} & \textbf{\small #2} \\
+      \textit{\small #3} & \textit{\small #4} \\
+      \small\hspace{1em}\begin{minipage}[t]{\linewidth}#5\end{minipage} & \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+% Creates a simpler subheading for sections like Hobbies or Activities.
+% ARGUMENTS: {Title}{Description list}
+\newcommand{\hobbySubheading}[2]{
+  \vspace{3pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{@{}p{\textwidth}@{\extracolsep{\fill}}r@{}}
+      \textbf{\normalsize #1} &  \\
+      \small\hspace{1em}\begin{minipage}[t]{\linewidth}#2\end{minipage} &\\
+    \end{tabular*}\vspace{-5pt}
+}
+
+
+%----------------------------------------------------------------------------------------
+%	BULLET POINT LIST COMMANDS
+%----------------------------------------------------------------------------------------
+
+% Defines a standard, compact, indented list for bullet points.
+% Spacing and bullet style are defined here for consistency.
+\newcommand{\resumeItemListStart}{
+  \begin{itemize}[leftmargin=0.15in, label=\tiny$\bullet$, topsep=0pt, itemsep=0em, partopsep=0pt, parsep=0pt]
+}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% Creates an alias for the hobby list. It will now use the exact same styling
+% as the standard resume item list, ensuring visual consistency.
+\let\hobbyItemListStart\resumeItemListStart
+\let\hobbyItemListEnd\resumeItemListEnd
+
+
+%----------------------------------------------------------------------------------------
+%	ITEM-LEVEL COMMANDS
+%----------------------------------------------------------------------------------------
+
+% A standard single-column list item.
+% ARGUMENTS: {Description}
+\newcommand{\resumeItem}[1]{
+  \item\small{#1}
+}
+
+% A two-column list item, with a layout consistent with \resumeSubheading.
+% It correctly handles multi-line descriptions.
+% ARGUMENTS: {Description}{Right-aligned text (e.g., Date)}
+\newcommand{\hobbyItem}[2]{
+  \item
+    \begin{tabular*}{\linewidth}[t]{@{}p{0.85\linewidth}@{\extracolsep{\fill}}r@{}}
+      #1 & \textit{#2}
+    \end{tabular*}
+}
+
+\begin{document}
+
+
+% ---------------------------------------------------------
+% _header.tex.j2 - Renders contact info line below the name
+% ---------------------------------------------------------
+
+\begin{center}
+
+{\huge\textbf{\textsc{ Marie Sklodowska Curie }}} \\
+
+        \vspace{5pt}
+% --- Phone (Plain Text) ---
++33 1 40 46 75 00
+% --- Email (Special mailto link) ---
+~--~ \href{mailto:marie.curie@sorbonne.fr}{marie.curie@sorbonne.fr}
+% --- Location (Plain Text) ---
+~--~ Paris, France
+% --- GitHub (Link) ---
+~--~ \href{https://www.nobelprize.org/prizes/physics/1903/marie-curie/biographical/}{Nobel Prize Profile }
+% --- LinkedIn (Link) ---
+\vspace{-7pt}
+\end{center}
+% ---------------------------------------------------------
+% _education.tex.j2 — Renders the Education section
+% ---------------------------------------------------------
+
+\section{\texorpdfstring{\color{andreblue}Education}{Education}}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {Doctor of Science in Physics \textnormal{\small~Awarded 'tres honorable' (very honorable)}}
+    {Paris, FR}
+    {University of Paris (Sorbonne)}
+    {Jun 1903}
+{\resumeItemListStart
+        \resumeItem{Thesis established the new scientific field of radioactivity, hypothesizing that radiation was an atomic property.}
+        \resumeItem{Presented novel methodologies for the measurement of radioactivity, forming a cornerstone for future research in atomic physics.}
+    \resumeItemListEnd
+    }
+
+  \resumeSubheading
+    {Degree in Mathematics \textnormal{\small~Graduated second in class}}
+    {Paris, FR}
+    {University of Paris (Sorbonne)}
+    {Jul 1894}
+{\resumeItemListStart
+        \resumeItem{Acquired advanced mathematical knowledge essential for theoretical physics and quantitative modeling.}
+        \resumeItem{Pursued as a second degree to build a multidisciplinary foundation for scientific research.}
+    \resumeItemListEnd
+    }
+
+  \resumeSubheading
+    {Degree in Physics \textnormal{\small~Graduated first in class}}
+    {Paris, FR}
+    {University of Paris (Sorbonne)}
+    {Jul 1893}
+{\resumeItemListStart
+        \resumeItem{Achieved top academic standing in a rigorous curriculum covering mechanics, electricity, and thermodynamics.}
+        \resumeItem{Built a comprehensive understanding of classical physics, enabling the identification of phenomena that defied existing theories.}
+    \resumeItemListEnd
+    }
+
+  \resumeSubheading
+    {Informal Scientific Training \textnormal{\small~Completed Clandestine Studies}}
+    {Warsaw, PL}
+    {Flying University (Uniwersytet Latajacy)}
+    {1886 - 1889}
+{\resumeItemListStart
+        \resumeItem{Participated in a clandestine underground university to pursue scientific education forbidden to women in Poland.}
+        \resumeItem{Gained foundational knowledge in chemistry and physics, sparking an interest in empirical research.}
+    \resumeItemListEnd
+    }
+
+
+\resumeSubHeadingListEnd
+\vspace{-16pt}
+% ---------------------------------------------------------
+% _experience.tex.j2 — Professional experience section
+% ---------------------------------------------------------
+
+\section{\texorpdfstring{\color{andreblue}Experience}{Experience}}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    { \textbf{Director of the Radium Institute} }
+    { \textbf{\small Paris, FR} }
+    { \textit{\normalsize at University of Paris} }
+    { \textit{\small 1914 - 1934} }
+    {
+      \resumeItemListStart
+          \resumeItem{ Held the post of Professor of General Physics, succeeding Pierre Curie and becoming the first female professor at the Sorbonne (appointed 1906). }
+          \resumeItem{ Directed a world-leading research center for chemistry, physics, and medicine, mentoring numerous doctoral students. }
+          \resumeItem{ Established a new scientific discipline and oversaw fundamental research into the nature of radioactivity and its applications. }
+      \resumeItemListEnd
+    }
+  \resumeSubheading
+    { \textbf{Director of the Red Cross Radiology Service} }
+    { \textbf{\small France} }
+    { \textit{\normalsize at French Red Cross} }
+    { \textit{\small 1914 - 1918} }
+    {
+      \resumeItemListStart
+          \resumeItem{ Conceptualized and developed mobile radiography units ('petites Curies') to diagnose injuries at the front lines. }
+          \resumeItem{ Authored training materials and personally instructed 150 women as the first military radiology technicians. }
+      \resumeItemListEnd
+    }
+  \resumeSubheading
+    { \textbf{Researcher \& Scientist} }
+    { \textbf{\small Paris, FR} }
+    { \textit{\normalsize at School of Chemistry and Physics (ESPCI)} }
+    { \textit{\small 1897 - 1906} }
+    {
+      \resumeItemListStart
+          \resumeItem{ Conducted foundational research on 'Becquerel rays', coining the term 'radioactivity'. }
+          \resumeItem{ Discovered and scientifically described two new elements in the periodic table: polonium (Po, 1898) and radium (Ra, 1898). }
+          \resumeItem{ Determined the atomic weight of radium, solidifying its status as a new element, and investigated its physical and chemical properties. }
+      \resumeItemListEnd
+    }
+
+\resumeSubHeadingListEnd
+
+% ---------------------------------------------------------
+% _projects.tex.j2 — Lists personal or academic projects
+% ---------------------------------------------------------
+
+
+
+% ---------------------------------------------------------
+% _skills.tex.j2 — Renders technical skills, tools, or language proficiencies
+% ---------------------------------------------------------
+
+\section{\texorpdfstring{\color{andreblue}Skills}{Skills}}
+
+\resumeSubHeadingListStart
+
+  \resumeItem{\textbf{Scientific Expertise:} Radioactivity, Nuclear Physics (emerging), Analytical Chemistry, Crystallography, Electrometry}
+  \vspace{-7pt}
+  \resumeItem{\textbf{Laboratory Techniques:} Fractional Crystallization, Chemical Separation \& Isolation, Electrometric Measurement, Radiography (X-ray), Glassblowing, Sample Preparation}
+  \vspace{-7pt}
+  \resumeItem{\textbf{Technical Instrumentation:} Piezoelectric Electrometer, Mobile X-ray Units ('petites Curies'), Radiation Shielding Protocols, Calorimeters for heat measurement}
+  \vspace{-7pt}
+  \resumeItem{\textbf{Languages:} Native in Polish, Fluent in French, Proficient in German \& Russian, Reading knowledge of English}
+  \vspace{-7pt}
+
+\resumeSubHeadingListEnd
+
+% ---------------------------------------------------------
+% _extracurricular.tex.j2 — Renders extracurricular activities, leadership, and interests
+% ---------------------------------------------------------
+
+\section{\texorpdfstring{\color{andreblue}Extracurricular}{Extracurricular}}
+
+\resumeSubHeadingListStart
+
+
+  \hobbySubheading
+    {Scientific Leadership \& Outreach}
+    {
+      % Start the list of items for this group.
+      \hobbyItemListStart
+          \hobbyItem{Active participant and only female member of the prestigious Solvay Conferences on Physics and Chemistry}{1911 - 1933}
+          \hobbyItem{Founded and directed the Radium Institute in her native Warsaw (now the Maria Sklodowska-Curie National Research Institute of Oncology)}{1925 - 1932}
+          \hobbyItem{Maintained extensive correspondence on theoretical and experimental physics with leading scientists, including Albert Einstein, Ernest Rutherford, and Max Planck}{c. 1900 - 1934}
+      \hobbyItemListEnd
+    }
+
+  \hobbySubheading
+    {Hobbies \& Personal Interests}
+    {
+      % Start the list of items for this group.
+      \hobbyItemListStart
+          \hobbyItem{Enjoyed long bicycle trips and extensive travel, including tours of the United States to fund her research}{Lifelong}
+          \hobbyItem{Kept meticulous and detailed personal and scientific journals throughout her life}{c. 1885 - 1934}
+          \hobbyItem{Swimming and hiking in the mountains}{Lifelong}
+      \hobbyItemListEnd
+    }
+
+\resumeSubHeadingListEnd
+
+    % Push this content to the bottom of the page,
+    % regardless of how much text precedes it.
+    \vspace*{\fill}%
+
+    \makebox[2.5in]{\hrulefill}\\
+    Paris\hspace{80pt} \today
+    \\
+    \vspace{-51pt}
+    \hspace{20pt}\includegraphics[width=5cm]{assets/SignatureMarieCurie.pdf}
+
+
+\end{document}
