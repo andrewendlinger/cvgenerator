@@ -19,7 +19,7 @@
 # The value you set here must correspond to a [<item>.facet] table in your
 # content file.
 #
-# --- Example of how facets work in your 'content_file_name' ---
+# --- Example of how facets work in your 'content_file' ---
 #
 #       [[experience]]
 #       role = "Director of the Red Cross Radiology Service"
@@ -38,11 +38,11 @@ facet_to_generate = "academia"
 
 # Path to the TOML file containing the textual content of your CV.
 # This includes your work experience, education, skills, projects, etc.
-content_file_name = "./content/mariecurie_cv.toml"
+content_file = "./content/mariecurie_cv.toml"
 
 # Path to the Jinja2 LaTeX template file (*.tex.j2).
 # This file defines the visual layout, structure, and style of your CV.
-template_file_name = "./templates/cv_template.tex.j2"
+content_file = "./templates/cv_template.tex.j2"
 
 
 [build_settings]

@@ -90,8 +90,8 @@ def generate(config_path: Path, output_tex_path: Path):
     facet = settings.get("facet_to_generate", "academic")
 
     # 2. Resolve Paths & Load Data
-    content_file = (config_dir / settings["content_file_name"]).resolve()
-    template_full_path = (config_dir / settings["template_file_name"]).resolve()
+    content_file = (config_dir / settings["content_file"]).resolve()
+    template_full_path = (config_dir / settings["template_file"]).resolve()
     cv_data = toml.load(content_file)
 
     # 3. Process Data
