@@ -1,0 +1,115 @@
+# ==============================================================================
+# CV Generator Configuration (`config.toml`)
+#
+# This file controls the main settings for the CV generation script.
+# It specifies which version of the CV to build, where to find the content
+# and layout files, and how to handle the output files.
+# ==============================================================================
+
+
+[cv_settings]
+# ------------------------------------------------------------------------------
+# CV Content and Versioning
+# ------------------------------------------------------------------------------
+
+# The specific "facet" or version of the CV to generate. This allows you to
+# maintain multiple tailored versions of your CV content within a single file.
+#
+# Common examples include "academia", "industry", "data_science", or "teaching".
+# The value you set here must correspond to a [<item>.facet] table in your
+# content file.
+#
+# --- Example of how facets work in your 'content_file_name' ---
+#
+#       [[experience]]
+#       role = "Director of the Red Cross Radiology Service"
+#       company = "French Red Cross"
+#       location = "France"
+#       date = "1914 - 1918"
+#       details.academia = [ "Some academia tailored job description" ]
+#       details.industry = [ "Some industry tailored job description" ]
+#
+# By setting `facet_to_generate` to "academia", the script will use the
+# settings from the [facets.academia] table to build the CV.
+facet_to_generate = "academia"
+
+
+# --- File Paths (relative to the location of this config file) ---
+
+# Path to the TOML file containing the textual content of your CV.
+# This includes your work experience, education, skills, projects, etc.
+content_file_name = "./content/mariecurie_cv.toml"
+
+# Path to the Jinja2 LaTeX template file (*.tex.j2).
+# This file defines the visual layout, structure, and style of your CV.
+template_file_name = "./templates/cv_template.tex.j2"
+
+
+[build_settings]
+# ------------------------------------------------------------------------------
+# Compilation and Build Environment
+# ------------------------------------------------------------------------------
+
+# If true, the script will use a Docker container. Both to run python and to run
+# the `pdflatex` command. This is recommended as it avoids the need to install a
+# full LaTeX distribution on your local machine.
+#
+#   - `true`: Use Docker for compilation. Requires Docker to be installed.
+#   - `false`: Use a local `pdflatex` installation. Requires a TeX
+#              distribution (like TeX Live, MiKTeX) to be in your system's PATH.
+#
+use_docker = true
+
+
+[output_settings]
+# ------------------------------------------------------------------------------
+# Output File Handling
+# ------------------------------------------------------------------------------
+
+# Determines the final output file format.
+#
+# Available options:
+#
+#   - 'pdf': (Default) Generates the `.tex` file and then compiles it to a PDF.
+#   - 'tex': Generates only the `.tex` source file. Useful for debugging the
+#            template output without running the full PDF compilation.
+#
+output_format = "pdf"
+
+# If true, the script will automatically delete temporary LaTeX files
+# (e.g., .aux, .log, .out) and the copied 'assets' folder (assets are copied
+# into the output folder during pdf generation) after the PDF has been
+# successfully generated.
+#
+#   - `true`: Recommended for final builds to keep the output folder clean.
+#   - `false`: Recommended when debugging LaTeX issues, as it preserves
+#              the log files for inspection.
+#
+cleanup_temp_files = true
+
+# Defines how the final output files are organized.
+#
+# Available options:
+#
+#   - 'auto': Creates a new, uniquely named folder for each build inside
+#             the 'output/' directory (e.g., 'output/17Jul2025_224647_cv_academia/').
+#             RECOMMENDED for archiving different versions of your CV.
+#
+#   - 'dump': Places all generated files directly into the 'output/' directory,
+#             overwriting any previous files with the same name.
+#             RECOMMENDED for rapid development and quick previews.
+#
+output_mode = "auto"
+
+
+# Defines the base name for the output file (without the .pdf or .tex extension).
+#
+#   - Automatic (default): If left empty (""), the filename will be
+#     automatically generated from the chosen facet, following the
+#     pattern `cv_<facet>`. For example: `cv_academia`.
+#
+#   - Manual: Provide a custom string to set a specific filename.
+#     For example: "CV_MarieCurie_2025".
+#
+# The script automatically adds the correct file extension.
+base_filename = "CV_MarieCurie_2025"

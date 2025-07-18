@@ -1,0 +1,212 @@
+# Marie Sklodowska Curie's CV
+
+[profile]
+name = "Marie Sklodowska Curie"
+phone = "+33 1 40 46 75 00"
+email = "marie.curie@sorbonne.fr"
+location = "Paris, France"
+
+github = { text = "Nobel Prize Profile", url = "https://www.nobelprize.org/prizes/physics/1903/marie-curie/biographical/" }
+
+[signature]
+location = "Paris"
+pdf_name = "SignatureMarieCurie.pdf" # pdf file - has to be inside the /app/assets folder
+
+# ***************
+
+
+[[education]]
+degree = "Doctor of Science in Physics"
+institution = "University of Paris (Sorbonne)"
+location = "Paris, FR"
+date = "Jun 1903"
+status = "Awarded 'tres honorable' (very honorable)"
+details.academia = [
+    "Thesis established the new scientific field of radioactivity, hypothesizing that radiation was an atomic property.",
+    "Presented novel methodologies for the measurement of radioactivity, forming a cornerstone for future research in atomic physics."
+]
+details.industry = [
+    "Discovered and characterized new materials (Polonium, Radium) with unprecedented energetic properties.",
+    "Developed robust quantitative methods for measuring substance properties, laying the groundwork for radiation-based technologies."
+]
+
+[[education]]
+degree = "Degree in Mathematics"
+institution = "University of Paris (Sorbonne)"
+location = "Paris, FR"
+date = "Jul 1894"
+status = "Graduated second in class"
+details.academia = [
+    "Acquired advanced mathematical knowledge essential for theoretical physics and quantitative modeling.",
+    "Pursued as a second degree to build a multidisciplinary foundation for scientific research."
+]
+details.industry = [
+    "Mastered advanced quantitative and analytical skills applicable to complex problem-solving.",
+    "Demonstrated ability to quickly master new technical domains with high proficiency."
+]
+
+[[education]]
+degree = "Degree in Physics"
+institution = "University of Paris (Sorbonne)"
+location = "Paris, FR"
+date = "Jul 1893"
+status = "Graduated first in class"
+details.academia = [
+    "Achieved top academic standing in a rigorous curriculum covering mechanics, electricity, and thermodynamics.",
+    "Built a comprehensive understanding of classical physics, enabling the identification of phenomena that defied existing theories."
+]
+details.industry = [
+    "Gained expertise in first-principles thinking across multiple physics domains.",
+    "Acquired hands-on laboratory experience and proficiency with scientific instrumentation of the era."
+]
+
+[[education]]
+degree = "Informal Scientific Training"
+institution = "Flying University (Uniwersytet Latajacy)"
+location = "Warsaw, PL"
+date = "1886 - 1889"
+status = "Completed Clandestine Studies"
+details.academia = [
+    "Participated in a clandestine underground university to pursue scientific education forbidden to women in Poland.",
+    "Gained foundational knowledge in chemistry and physics, sparking an interest in empirical research."
+]
+details.industry = [
+    "Demonstrated high initiative, resourcefulness, and commitment to self-development in a challenging environment.",
+    "Proactively sought out knowledge and training opportunities beyond conventional means."
+]
+
+
+# ***************
+
+
+[[experience]]
+role = "Director of the Radium Institute"
+company = "University of Paris"
+location = "Paris, FR"
+date = "1914 - 1934" # Founded in 1909, construction finished 1914
+details.academia = [
+    "Held the post of Professor of General Physics, succeeding Pierre Curie and becoming the first female professor at the Sorbonne (appointed 1906).",
+    "Directed a world-leading research center for chemistry, physics, and medicine, mentoring numerous doctoral students.",
+    "Established a new scientific discipline and oversaw fundamental research into the nature of radioactivity and its applications."
+]
+details.industry = [
+    "Managed a premier R\\&D laboratory, securing funding and directing research with both pure science and medical application tracks.",
+    "Oversaw all laboratory operations, including budget, personnel (scientists and technicians), and pioneering safety protocols for handling radioactive materials.",
+    "Championed the translation of fundamental research into practical applications, particularly in the field of cancer treatment (Curietherapy)."
+]
+
+[[experience]]
+role = "Director of the Red Cross Radiology Service"
+company = "French Red Cross"
+location = "France"
+date = "1914 - 1918"
+details.academia = [
+    "Conceptualized and developed mobile radiography units ('petites Curies') to diagnose injuries at the front lines.",
+    "Authored training materials and personally instructed 150 women as the first military radiology technicians."
+]
+details.industry = [
+    "Led a large-scale wartime logistics and technology deployment project, procuring equipment and vehicles.",
+    "Scaled operations from a single unit to 20 mobile X-ray vehicles and 200 stationary units, enabling the treatment of over one million wounded soldiers.",
+    "Managed the full lifecycle of the project from concept and fundraising to execution, training, and field operations."
+]
+
+[[experience]]
+role = "Researcher \\& Scientist"
+company = "School of Chemistry and Physics (ESPCI)"
+location = "Paris, FR"
+date = "1897 - 1906"
+details.academia = [
+    "Conducted foundational research on 'Becquerel rays', coining the term 'radioactivity'.",
+    "Discovered and scientifically described two new elements in the periodic table: polonium (Po, 1898) and radium (Ra, 1898).",
+    "Determined the atomic weight of radium, solidifying its status as a new element, and investigated its physical and chemical properties."
+]
+details.industry = [
+    "Developed an innovative and laborious process of fractional crystallization to separate radium chloride from tons of raw pitchblende ore.",
+    "Pioneered a new industry based on radium, from ore processing and refining to its use in medical and industrial applications (e.g., luminous paints).",
+    "Engineered and utilized a highly sensitive piezoelectric electrometer, co-developed by Pierre and Jacques Curie, for precise measurement of faint electrical charges."
+]
+
+
+# ***************
+
+
+[[awards_and_honors]]
+title = "Nobel Prize in Chemistry"
+venue = "Royal Swedish Academy of Sciences"
+date = "1911"
+details = "Sole recipient for the discovery of the elements radium and polonium, the isolation of radium, and the study of the nature and compounds of this remarkable element."
+
+[[awards_and_honors]]
+title = "Elliott Cresson Medal"
+venue = "Franklin Institute"
+date = "1909"
+details = "Awarded for the discovery of Radium."
+
+[[awards_and_honors]]
+title = "Davy Medal"
+venue = "Royal Society"
+date = "1903"
+details = "Shared with Pierre Curie for their research on radium."
+
+[[awards_and_honors]]
+title = "Nobel Prize in Physics"
+venue = "Royal Swedish Academy of Sciences"
+date = "1903"
+details = "Shared with Pierre Curie and Henri Becquerel in recognition of their joint research on the radiation phenomena discovered by Professor Henri Becquerel."
+
+
+# ***************
+
+
+[[publications]]
+title = "Traite de radioactivite (Treatise on Radioactivity)"
+venue = "Gauthier-Villars, Paris"
+date = "1910"
+details = "A definitive, two-volume, 971-page summary of the state of knowledge on radioactivity, becoming a standard reference for the new field."
+
+[[publications]]
+title = "Recherches sur les substances radioactives (Research on Radioactive Substances)"
+venue = "University of Paris, published by Gauthier-Villars"
+date = "1903"
+details = "Doctoral dissertation presented to the Faculty of Sciences in Paris. Published and widely circulated, forming the basis of modern atomic physics."
+
+
+# ***************
+
+
+[[skills]]
+title = "Scientific Expertise"
+items = ["Radioactivity", "Nuclear Physics (emerging)", "Analytical Chemistry", "Crystallography", "Electrometry"]
+
+[[skills]]
+title = "Laboratory Techniques"
+items = ["Fractional Crystallization", "Chemical Separation \\& Isolation", "Electrometric Measurement", "Radiography (X-ray)", "Glassblowing", "Sample Preparation"]
+
+[[skills]]
+title = "Technical Instrumentation"
+items = ["Piezoelectric Electrometer", "Mobile X-ray Units ('petites Curies')", "Radiation Shielding Protocols", "Calorimeters for heat measurement"]
+
+[[skills]]
+title = "Languages"
+items = ["Native in Polish", "Fluent in French", "Proficient in German \\& Russian", "Reading knowledge of English"]
+
+# ***************
+
+
+[[extracurricular]]
+category = "Scientific Leadership \\& Outreach"
+items = [
+    { description = "Active participant and only female member of the prestigious Solvay Conferences on Physics and Chemistry", date = "1911 - 1933" },
+    { description = "Founded and directed the Radium Institute in her native Warsaw (now the Maria Sklodowska-Curie National Research Institute of Oncology)", date = "1925 - 1932" },
+    { description = "Maintained extensive correspondence on theoretical and experimental physics with leading scientists, including Albert Einstein, Ernest Rutherford, and Max Planck", date = "c. 1900 - 1934" }
+]
+
+[[extracurricular]]
+category = "Hobbies \\& Personal Interests"
+items = [
+    { description = "Enjoyed long bicycle trips and extensive travel, including tours of the United States to fund her research", date = "Lifelong" },
+    { description = "Kept meticulous and detailed personal and scientific journals throughout her life", date = "c. 1885 - 1934" },
+    { description = "Swimming and hiking in the mountains", date = "Lifelong" }
+]
+
+

@@ -1,0 +1,25 @@
+% ---------------------------------------------------------
+% _experience.tex.j2 — Professional experience section
+% ---------------------------------------------------------
+
+((* if experience *))
+\section{\texorpdfstring{\color{andreblue}Experience}{Experience}}
+\resumeSubHeadingListStart
+
+((* for exp in experience *))
+  \resumeSubheading
+    { \textbf{((( exp.role )))} }
+    { \textbf{\small ((( exp.location )))} }
+    { \textit{\normalsize at ((( exp.company )))} }
+    { \textit{\small ((( exp.date )))} }
+    {
+      \resumeItemListStart
+        ((* for item in exp.details *))
+          \resumeItem{ ((( item ))) }
+        ((* endfor *))
+      \resumeItemListEnd
+    }
+((* endfor *))
+
+\resumeSubHeadingListEnd
+((* endif *))

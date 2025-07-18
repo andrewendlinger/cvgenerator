@@ -1,0 +1,29 @@
+[project]
+name = "cvgenerator"
+version = "0.1.0"
+description = "Generate a professional CV in multiple formats (PDF, LaTex) from a single, simple data file."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "jinja2>=3.1.6",
+    "taskipy>=1.14.1",
+    "toml>=0.10.2",
+]
+
+# ==============================================================================
+# Task Runner (Taskipy)
+#
+# Defines convenient shortcuts for common development commands.
+# Run tasks using `uv run task <task_name>`, e.g., `uv run task build`.
+# ==============================================================================
+
+[tool.taskipy.tasks]
+# > uv run task build
+# Build the CV from source files.
+# This is the main command to generate the final PDF based on your config.
+build = "uv run python -m app.main"
+
+# > uv run task purge
+# Deletes all files inside the `output/` directory (but not the directory itself).
+# - Only runs if the output/ directory exists.
+purge = "uv run python -m app.scripts.clear_output"

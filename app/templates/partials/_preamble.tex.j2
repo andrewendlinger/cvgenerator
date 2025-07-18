@@ -1,0 +1,59 @@
+% ---------------------------------------------------------
+% _preamble.tex.j2 — Sets up LaTeX document, packages, etc.
+% ---------------------------------------------------------
+
+% Use standard article class for simple documents
+\documentclass[letterpaper, 11pt]{article}
+
+% Language and symbols
+\usepackage[english]{babel}
+\usepackage{latexsym}
+
+% Full-page usage with no headers/footers
+\usepackage[empty]{fullpage}
+
+% Section formatting and symbols
+\usepackage{titlesec}
+\usepackage{marvosym}
+
+% Colors and font styling
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{enumitem}
+
+% URL handling
+\usepackage[hidelinks]{hyperref}
+
+% Tables, icons, and typography
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+% Unicode support for PDF output
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+% Page layout tweaks
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Hyperlink color styling
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=linki,
+}
+\urlstyle{same}
+
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}

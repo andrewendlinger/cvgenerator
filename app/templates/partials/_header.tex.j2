@@ -1,0 +1,57 @@
+% ---------------------------------------------------------
+% _header.tex.j2 - Renders contact info line below the name
+% ---------------------------------------------------------
+
+\begin{center}
+
+    ((* if profile.name -*))
+        {\huge\textbf{\textsc{ ((( profile.name ))) }}} \\
+
+        \vspace{5pt}
+    ((* endif -*))
+
+    ((# We create a 'flag' to track if we need to print a separator. #))
+    ((* set separator_needed = false -*))
+
+    % --- Phone (Plain Text) ---
+    ((*- if profile.phone *))
+
+        ((* if separator_needed -*)) ~--~ ((* endif -*))
+        ((( profile.phone )))
+        ((* set separator_needed = true -*))
+    ((* endif -*))
+
+    % --- Email (Special mailto link) ---
+    ((*- if profile.email *))
+
+        ((* if separator_needed -*)) ~--~ ((* endif -*))
+        \href{mailto:((( profile.email )))}{((( profile.email )))}
+        ((* set separator_needed = true -*))
+    ((* endif -*))
+
+    % --- Location (Plain Text) ---
+    ((*- if profile.location *))
+
+        ((* if separator_needed -*)) ~--~ ((* endif -*))
+        ((( profile.location )))
+        ((* set separator_needed = true -*))
+    ((* endif -*))
+
+    % --- GitHub (Link) ---
+    ((*- if profile.github and profile.github is mapping *))
+
+        ((* if separator_needed -*)) ~--~ ((* endif -*))
+        \href{((( profile.github.url )))}{((( profile.github.text ))) }
+        ((* set separator_needed = true -*))
+    ((* endif -*))
+
+    % --- LinkedIn (Link) ---
+    ((*- if profile.linkedin and profile.linkedin is mapping *))
+
+        ((* if separator_needed -*)) ~--~ ((* endif -*))
+        \href{((( profile.linkedin.url )))}{((( profile.linkedin.text ))) }
+        ((* set separator_needed = true -*))
+    ((* endif *))
+
+\vspace{-7pt}
+\end{center}

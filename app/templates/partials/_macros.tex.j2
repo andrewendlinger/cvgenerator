@@ -1,0 +1,84 @@
+%========================================================================================
+% _macros.tex
+%
+% This file defines all the custom LaTeX commands (macros) used to structure and
+% style the resume.
+%========================================================================================
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION FORMATTING
+%----------------------------------------------------------------------------------------
+% Defines the style for \section headings using the `titlesec` package.
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+
+%----------------------------------------------------------------------------------------
+%	HEADING & ENTRY COMMANDS
+%----------------------------------------------------------------------------------------
+
+% Defines a wrapper environment for a list of entries (e.g., jobs, projects).
+% It creates a clean vertical list with no bullets or indentation.
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+
+% Creates a standard entry for a job, project, or education section.
+% ARGUMENTS: {Title}{Location}{Subtitle/Company}{Dates}{Description list}
+\newcommand{\resumeSubheading}[5]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{@{}p{0.85\textwidth}@{\extracolsep{\fill}}r@{}}
+      \textbf{\normalsize #1} & \textbf{\small #2} \\
+      \textit{\small #3} & \textit{\small #4} \\
+      \small\hspace{1em}\begin{minipage}[t]{\linewidth}#5\end{minipage} & \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+% Creates a simpler subheading for sections like Hobbies or Activities.
+% ARGUMENTS: {Title}{Description list}
+\newcommand{\hobbySubheading}[2]{
+  \vspace{3pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{@{}p{\textwidth}@{\extracolsep{\fill}}r@{}}
+      \textbf{\normalsize #1} &  \\
+      \small\hspace{1em}\begin{minipage}[t]{\linewidth}#2\end{minipage} &\\
+    \end{tabular*}\vspace{-5pt}
+}
+
+
+%----------------------------------------------------------------------------------------
+%	BULLET POINT LIST COMMANDS
+%----------------------------------------------------------------------------------------
+
+% Defines a standard, compact, indented list for bullet points.
+% Spacing and bullet style are defined here for consistency.
+\newcommand{\resumeItemListStart}{
+  \begin{itemize}[leftmargin=0.15in, label=\tiny$\bullet$, topsep=0pt, itemsep=0em, partopsep=0pt, parsep=0pt]
+}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% Creates an alias for the hobby list. It will now use the exact same styling
+% as the standard resume item list, ensuring visual consistency.
+\let\hobbyItemListStart\resumeItemListStart
+\let\hobbyItemListEnd\resumeItemListEnd
+
+
+%----------------------------------------------------------------------------------------
+%	ITEM-LEVEL COMMANDS
+%----------------------------------------------------------------------------------------
+
+% A standard single-column list item.
+% ARGUMENTS: {Description}
+\newcommand{\resumeItem}[1]{
+  \item\small{#1}
+}
+
+% A two-column list item, with a layout consistent with \resumeSubheading.
+% It correctly handles multi-line descriptions.
+% ARGUMENTS: {Description}{Right-aligned text (e.g., Date)}
+\newcommand{\hobbyItem}[2]{
+  \item
+    \begin{tabular*}{\linewidth}[t]{@{}p{0.85\linewidth}@{\extracolsep{\fill}}r@{}}
+      #1 & \textit{#2}
+    \end{tabular*}
+}

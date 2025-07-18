@@ -1,0 +1,25 @@
+% ---------------------------------------------------------
+% _extracurricular.tex.j2 — Renders extracurricular activities, leadership, and interests
+% ---------------------------------------------------------
+
+((* if extracurricular *))
+\section{\texorpdfstring{\color{andreblue}Extracurricular}{Extracurricular}}
+
+\resumeSubHeadingListStart
+
+((* for group in extracurricular *))
+
+  \hobbySubheading
+    {((( group.category )))}
+    {
+      % Start the list of items for this group.
+      \hobbyItemListStart
+        ((* for item in group['items'] *))
+          \hobbyItem{((( item.description )))}{((( item.date )))}
+        ((* endfor *))
+      \hobbyItemListEnd
+    }
+((* endfor *))
+
+\resumeSubHeadingListEnd
+((* endif *))

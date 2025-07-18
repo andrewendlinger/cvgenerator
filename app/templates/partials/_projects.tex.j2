@@ -1,0 +1,25 @@
+% ---------------------------------------------------------
+% _projects.tex.j2 — Lists personal or academic projects
+% ---------------------------------------------------------
+
+((* if projects *))
+\section{\texorpdfstring{\color{andreblue}Projects}{Projects}}
+\resumeSubHeadingListStart
+
+((* for proj in projects *))
+  \resumeSubheading
+    { \textbf{((( proj.name )))} }
+    { \textbf{\small ((( proj.location or "" ))) }}
+    { \textit{\normalsize ((( proj.role or "" ))) } }
+    { \textit{\small ((( proj.date or "" ))) } }
+    {
+      \resumeItemListStart
+        ((* for item in proj.details *))
+          \resumeItem{ ((( item ))) }
+        ((* endfor *))
+      \resumeItemListEnd
+    }
+((* endfor *))
+
+\resumeSubHeadingListEnd
+((* endif *))

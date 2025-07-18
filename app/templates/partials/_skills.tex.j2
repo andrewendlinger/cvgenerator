@@ -1,0 +1,16 @@
+% ---------------------------------------------------------
+% _skills.tex.j2 — Renders technical skills, tools, or language proficiencies
+% ---------------------------------------------------------
+
+((* if skills *))
+\section{\texorpdfstring{\color{andreblue}Skills}{Skills}}
+
+\resumeSubHeadingListStart
+
+((* for skill_group in skills *))
+  \resumeItem{\textbf{((( skill_group.title ))):} ((( skill_group['items'] | join(", ") )))}
+  \vspace{-7pt}
+((* endfor *))
+
+\resumeSubHeadingListEnd
+((* endif *))

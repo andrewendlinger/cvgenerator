@@ -1,0 +1,32 @@
+% ---------------------------------------------------------
+% cv_template.tex.jinja — Master layout for the full CV
+% ---------------------------------------------------------
+
+((* include "partials/_preamble.tex.j2" *))
+
+((* include "partials/_colors.tex.j2" *))
+
+((* include "partials/_macros.tex.j2" *))
+
+
+\begin{document}
+
+
+((* include "partials/_header.tex.j2" *))
+
+((* include "partials/_education.tex.j2" *))
+
+((* include "partials/_experience.tex.j2" *))
+
+((* include "partials/_projects.tex.j2" *))
+
+((# \pagebreak #))
+
+((* include "partials/_skills.tex.j2" *))
+
+((* include "partials/_extracurricular.tex.j2" *))
+
+((* include "partials/_signature.tex.j2" *))
+
+
+\end{document}

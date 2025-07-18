@@ -1,0 +1,29 @@
+% ---------------------------------------------------------
+% _education.tex.j2 — Renders the Education section
+% ---------------------------------------------------------
+
+\section{\texorpdfstring{\color{andreblue}Education}{Education}}
+\resumeSubHeadingListStart
+
+((* for edu in education *))
+  \resumeSubheading
+    {((( edu.degree )))((* if edu.status *)) \textnormal{\small~((( edu.status )))}((* endif *))}
+    {((( edu.location )))}
+    {((( edu.institution )))}
+    {((( edu.date )))}
+    ((* if edu.details -*))
+    {\resumeItemListStart
+        ((*- for item in edu.details *))
+
+        \resumeItem{((( item )))}
+
+        ((*- endfor *))
+
+    \resumeItemListEnd
+    }
+    ((* endif *))
+
+((* endfor *))
+
+\resumeSubHeadingListEnd
+\vspace{-16pt}
