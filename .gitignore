@@ -9,19 +9,22 @@ wheels/
 # Virtual environments
 .venv
 
+# MacOS
+.DS_Store
+
 # output folder
 output/
-.DS_Store
+# But do NOT ignore the demo
+!output/demo/CV_MarieCurie_2025.pdf
+!output/demo/CV_MarieCurie_2025.tex
 
 # Ignore all contents of the 'content' directory (keep CV data local and privat by default)
 app/content/*
-
 # But do NOT ignore mariecurie_cv.toml
 !app/content/mariecurie_cv.toml
 
 # Ignore all contents of the 'content' directory (keep CV data local and privat by default)
 app/assets/*
-
 # But do NOT ignore mariecurie_cv.toml
 !app/assets/SignatureMarieCurie.toml
 !app/assets/icon_cvgen.svg
