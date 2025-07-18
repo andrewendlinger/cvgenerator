@@ -27,3 +27,8 @@ build = "uv run python -m app.main"
 # Deletes all files inside the `output/` directory (but not the directory itself).
 # - Only runs if the output/ directory exists.
 purge = "uv run python -m app.scripts.clear_output"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.1",
+]
