@@ -18,7 +18,8 @@ def clear_output_dir():
     for item in output_dir.iterdir():
         try:
             if item.is_dir():
-                shutil.rmtree(item)
+                if item.name != "demo":
+                    shutil.rmtree(item)
             else:
                 item.unlink()
         except Exception as e:
