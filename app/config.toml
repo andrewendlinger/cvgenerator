@@ -42,7 +42,7 @@ content_file = "./content/mariecurie_cv.toml"
 
 # Path to the Jinja2 LaTeX template file (*.tex.j2).
 # This file defines the visual layout, structure, and style of your CV.
-content_file = "./templates/cv_template.tex.j2"
+template_file = "./templates/cv_template.tex.j2"
 
 
 [build_settings]
@@ -99,7 +99,7 @@ cleanup_temp_files = true
 #             overwriting any previous files with the same name.
 #             RECOMMENDED for rapid development and quick previews.
 #
-output_mode = "auto"
+output_mode = "dump"
 
 
 # Defines the base name for the output file (without the .pdf or .tex extension).
@@ -112,4 +112,6 @@ output_mode = "auto"
 #     For example: "CV_MarieCurie_2025".
 #
 # The script automatically adds the correct file extension.
-base_filename = "CV_MarieCurie_2025"
+base_filename = "pytest_docker_pdf"
+
+btwnotmock = true
