@@ -9,52 +9,13 @@ on:
     branches: [ "main" ]
 
 jobs:
-#   fast_tests:
-#     name: Run Fast Tests (Local)
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       - name: Check out code
-#         uses: actions/checkout@v4
-
-#       - name: Install uv
-#         uses: astral-sh/setup-uv@v6
-#         with:
-#           enable-cache: true
-
-#       - name: Set up Python from pyproject.toml
-#         uses: actions/setup-python@v5
-#         with:
-#           python-version-file: "pyproject.toml"
-
-#       - name: Install the project
-#         run: uv sync --locked --all-extras --dev
-
-#       - name: Run fast pytest tests
-#         run: uv run pytest -sv -m "not slow"
-
-  slow_tests:
-    name: Run Slow Tests (Docker)
+  fast_tests:
+    name: Run Fast Tests (Local)
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out code
         uses: actions/checkout@v4
-
-      - name: Cache Docker image
-        id: cache-docker-image
-        uses: actions/cache@v4
-        with:
-          path: latex-cv.tar
-          key: ${{ runner.os }}-docker-image-${{ hashFiles('Dockerfile', '**/*.py', '**/requirements*', '**/pyproject.toml') }}
-
-      - name: Load Docker image from cache
-        if: steps.cache-docker-image.outputs.cache-hit == 'true'
-        run: docker load --input latex-cv.tar
-
-      - name: Build Docker image (if cache miss)
-        if: steps.cache-docker-image.outputs.cache-hit != 'true'
-        run: docker build -t latex-cv .
 
       - name: Install uv
         uses: astral-sh/setup-uv@v6
@@ -69,9 +30,48 @@ jobs:
       - name: Install the project
         run: uv sync --locked --all-extras --dev
 
-      - name: Run slow pytest tests
-        run: uv run pytest -sv -m "slow"
+      - name: Run fast pytest tests
+        run: uv run pytest -sv -m "not slow"
 
-      - name: Save Docker image to cache
-        if: steps.cache-docker-image.outputs.cache-hit != 'true'
-        run: docker save --output latex-cv.tar latex-cv
+  # slow_tests:
+  #   name: Run Slow Tests (Docker)
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Check out code
+  #       uses: actions/checkout@v4
+
+  #     - name: Cache Docker image
+  #       id: cache-docker-image
+  #       uses: actions/cache@v4
+  #       with:
+  #         path: latex-cv.tar
+  #         key: ${{ runner.os }}-docker-image-${{ hashFiles('Dockerfile', '**/*.py', '**/requirements*', '**/pyproject.toml') }}
+
+  #     - name: Load Docker image from cache
+  #       if: steps.cache-docker-image.outputs.cache-hit == 'true'
+  #       run: docker load --input latex-cv.tar
+
+  #     - name: Build Docker image (if cache miss)
+  #       if: steps.cache-docker-image.outputs.cache-hit != 'true'
+  #       run: docker build -t latex-cv .
+
+  #     - name: Install uv
+  #       uses: astral-sh/setup-uv@v6
+  #       with:
+  #         enable-cache: true
+
+  #     - name: Set up Python from pyproject.toml
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version-file: "pyproject.toml"
+
+  #     - name: Install the project
+  #       run: uv sync --locked --all-extras --dev
+
+  #     - name: Run slow pytest tests
+  #       run: uv run pytest -sv -m "slow"
+
+  #     - name: Save Docker image to cache
+  #       if: steps.cache-docker-image.outputs.cache-hit != 'true'
+  #       run: docker save --output latex-cv.tar latex-cv
