@@ -5,6 +5,7 @@
 
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+![Tests](https://github.com/andrewendlinger/cvgenerator/actions/workflows/test_build_process.yml/badge.svg)
 
 A tool to generate formatted, tailored PDF CVs from a simple text file. Stop manually editing `.tex` files for every job application and let this project automate the process for you. [Here is a demo](./output/demo/CV_MarieCurie_2025.pdf).
 
