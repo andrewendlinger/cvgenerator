@@ -112,6 +112,6 @@ output_mode = "dump"
 #     For example: "CV_MarieCurie_2025".
 #
 # The script automatically adds the correct file extension.
-base_filename = "pytest_docker_pdf"
+base_filename = "CV_MarieCurie_2025"
 
 btwnotmock = true
