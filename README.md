@@ -1,34 +1,32 @@
 <h1>
-  <img src="./app/assets/icon_cvgen.svg" alt="icon" width="100" style="vertical-align: middle; margin-right: 15px;">
-  CV Generator
+  <img src="./app/assets/icon_cvgen.svg" alt="icon" width="100">&nbsp;&nbsp;CV Generator
 </h1>
 
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 ![Tests](https://github.com/andrewendlinger/cvgenerator/actions/workflows/test_build_process.yml/badge.svg)
 
-A tool to generate formatted, tailored PDF CVs from a simple text file. Stop manually editing `.tex` files for every job application and let this project automate the process for you. [Here is a demo](./output/demo/CV_MarieCurie_2025.pdf).
 
----
+A tool to generate **formatted, tailored PDF CVs** from a simple text file.
+
+<p>&nbsp;</p>
+<p align="center" style="font-size:18px;">
+  📦 <a href="./app/content/mariecurie_cv.toml"><b>TOML input</b></a> &nbsp;&rarr;&nbsp;
+  ⚙️ <em>Python + LaTeX </em> &nbsp;&rarr;&nbsp;
+  📄 <a href="./output/demo/CV_MarieCurie_2025.pdf"><b>PDF output</b></a>
+</p>
+<p>&nbsp;</p>
+
+
 
 ## ✨ About The Project
 
-Managing multiple CV versions can be tedious — academic, industry, grant-specific, and more. This project separates **content** (your professional history) from **presentation** (the LaTeX template) to streamline this process.
+I got tired of juggling multiple CV versions — academic, industry, grants — and constantly editing `.tex` files. So, I built this tool to separate **content** (your info) from **design** (the LaTeX template) and make CV updates easy.
 
-With a single [TOML](https://toml.io/en/) file and a system of *facets*, you can define multiple CV versions and build them with one command. It supports Docker for full reproducibility without installing LaTeX locally.
 
-#### Key Features
 
-* **Single Source of Truth**
-All CV data lives in one easy-to-edit TOML file.
-* **Facet System**
-Generate different CV versions (e.g., "academia", "industry") from the same data.
-* **Customizable Templates**
-Full control over layout using Jinja2 + LaTeX.
-* **Dockerized Builds**
-Build CVs in a clean containerized environment.
-* **Flexible Configuration**
-Control formats, filenames, cleanup, and output structure via `config.toml`.
+* Using a single TOML ([toml?](https://toml.io/en/)) file plus *facets*, you can quickly create different CV versions with one command.
+* Docker support means no LaTeX install is needed.
 
 ---
 
@@ -52,42 +50,37 @@ cd cv-generator
 Install dependencies:
 
 ```bash
-# with uv
+# with uv (recommended) 
 uv sync
-# or using pip
-pip install .
+
+# or:
+# pip install .
 ```
 
 ---
 
 ## Usage
 
-#### Build Your CV
-
-**Recommended:** Use the `build` task:
+Build Your CV
 
 ```bash
-uv run build
+# (recommended)
+uv run task build
+
+# or:
+# python app/main.py
 ```
 
-Or run the script directly:
-
-```bash
-python app/main.py
-```
-
-### 🧹 Clean the Output Directory
+Clean the Output Directory
 
 To remove generated files:
 
 ```bash
-uv run purge
-```
+# (recommended)
+uv run task purge
 
-Equivalent to running:
-
-```bash
-python app/scripts/clear_output.py
+# or: 
+# python app/scripts/clear_output.py
 ```
 
 ---
@@ -98,20 +91,24 @@ This system revolves around **three main components**:
 
 ### 1. Content File
 
-Located in [`app/content/`](./app/content/mariecurie_cv.toml), this TOML file defines your **personal details, experience, education, and skills**.
+Located in [`app/content/`](./app/content/mariecurie_cv.toml) is a TOML file that stores your **personal details, experience, education, and skills**.
 
 Each entry can include **facets** to generate different versions of the CV — for example, targeting academia vs. industry:
 
 ```toml
+
 [[education]]
 degree = "Doctor of Science in Physics"
 institution = "University of Paris (Sorbonne)"
-details.academia = [
+# first facet
+details.academia = [ 
     "Thesis established the new scientific field of radioactivity..."
 ]
+# second facet
 details.industry = [
     "Discovered and characterized new materials (Polonium, Radium)..."
 ]
+
 ```
 👉 See the full example: [`mariecurie_cv.toml`](./app/content/mariecurie_cv.toml)
 
@@ -135,9 +132,6 @@ Key sections:
 |                     | `output_mode`        | `auto` (timestamped folder) or `dump` (flat output) |
 |                     | `base_filename`      | Custom output filename (e.g. `CV_MarieCurie_2025`)  |
 
----
-
-Here’s an improved and more polished version of that section — it's clearer, slightly more formal, and structured for easy readability:
 
 ### 3. Templates
 
@@ -154,31 +148,21 @@ Template files are located in [`/app/templates/`](./app/templates/) and define t
 
 Together, these templates control the **visual style**, **structure**, and **content placement** in the final document.
 
----
+----
 
 ## 🐳 Docker Workflow
 
 Use Docker for consistent builds across systems and to **avoid any local LaTeX setup or dependency issues**.
 
-### Steps:
+To use docker, simply:
 
-1. In [`config.toml`](./app/config.toml), set:
+1. In [`config.toml`](./app/config.toml), set:  `use_docker = true`
+2. Start the build (`uv run task build`)
 
-   ```toml
-   use_docker = true
-   ```
-
-2. Build the CV:
-
-   ```bash
-   uv run build
-   ```
-
-This will:
-
-* Automatically build the Docker image
-* Mount your project into the container
-* Compile your CV to PDF or LaTeX
+> Under the hood this will:
+> * Automatically build the Docker image
+> * Mount your project into the container
+> * Compile your CV to PDF or LaTeX
 
 
 ## 📂 Project Structure
