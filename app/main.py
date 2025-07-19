@@ -91,14 +91,24 @@ def main():
     print("🚀 Starting CV generation...\n")
 
     config = load_config()
-    settings_cv = config.get("cv_settings", {})
-    settings_output = config.get("output_settings", {})
+    print("\n\n------ USED CONFIG ------ \n\n")
+    print(config)
+    print(CONFIG_FILE)
+    print("\n\n------ USED CONFIG END ------ \n\n")
+    try:
+        settings_cv = config["cv_settings"]
+        settings_output = config["output_settings"]
 
-    facet = settings_cv.get("facet_to_generate", "academic")
-    cleanup = settings_output.get("cleanup_temp_files", False)
-    output_mode = settings_output.get("output_mode", "auto")
-    output_format = settings_output.get("output_format", "pdf")
-    output_cv_filename = settings_output.get("base_filename", f"cv_{facet}")
+        facet = settings_cv["facet_to_generate"]
+        cleanup = settings_output["cleanup_temp_files"]
+        output_mode = settings_output["output_mode"]
+        output_format = settings_output["output_format"]
+        output_cv_filename = settings_output["base_filename"]
+    except KeyError as e:
+        print(
+            f"❌ Faulty config.toml - missing key: {e}\n\n{traceback.format_exc(chain=False)}"
+        )
+        sys.exit(1)
 
     # Determine output directory
     if output_mode == "auto":
