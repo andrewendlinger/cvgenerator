@@ -1,5 +1,5 @@
 <h1>
-  <img src="./app/assets/icon_cvgen.svg" alt="icon" width="100">&nbsp;&nbsp;CV Generator
+  CV Generator&nbsp;&nbsp;&nbsp;<img src="./app/assets/icon_cvgen.svg" alt="icon" width="100", align="right">
 </h1>
 
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
