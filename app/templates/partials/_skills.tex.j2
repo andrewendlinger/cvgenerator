@@ -9,7 +9,8 @@
 
 ((* for skill_group in skills *))
   \resumeItem{\textbf{((( skill_group.title ))):} ((( skill_group['items'] | join(", ") )))}
-  \vspace{-7pt}
+  ((* if not loop.last *))  \vspace{-7pt}((* endif *))
+
 ((* endfor *))
 
 \resumeSubHeadingListEnd

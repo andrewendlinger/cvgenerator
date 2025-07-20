@@ -28,7 +28,7 @@
 % ARGUMENTS: {Title}{Location}{Subtitle/Company}{Dates}{Description list}
 \newcommand{\resumeSubheading}[5]{
   \vspace{-2pt}\item
-    \begin{tabular*}{1.0\textwidth}[t]{@{}p{0.85\textwidth}@{\extracolsep{\fill}}r@{}}
+    \begin{tabular*}{1.0\textwidth}[t]{@{}p{0.77\textwidth}@{\extracolsep{\fill}}r@{}}
       \textbf{\normalsize #1} & \textbf{\small #2} \\
       \textit{\small #3} & \textit{\small #4} \\
       \small\hspace{1em}\begin{minipage}[t]{\linewidth}#5\end{minipage} & \\
@@ -45,22 +45,43 @@
     \end{tabular*}\vspace{-5pt}
 }
 
+% Creates a standard entry for a publication / talk.
+% ARGUMENTS: {Title}{Venue}{Details}{Date}
+\newcommand{\paperSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{@{}p{0.84\textwidth}@{\extracolsep{\fill}}r@{}}
+      \textbf{\large#1} & \textbf{\small #2} \\
+      \textit{\small\hspace{2em}\begin{minipage}[t]{\linewidth}#3\end{minipage}} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+
+% A bulleted list item with a right-aligned date.
+% Final robust version using \makebox to force alignment
+% in complex nested environments.
+\newcommand{\resumeItemWithDate}[2]{%
+  \item%
+  \makebox[\linewidth]{%
+    \parbox[t]{0.82\linewidth}{\small{#1}}%
+    \hfill%
+    \textit{\small #2\quad}%
+  }
+}
 
 %----------------------------------------------------------------------------------------
 %	BULLET POINT LIST COMMANDS
 %----------------------------------------------------------------------------------------
 
+% places the 'bullet' in the middle instead of
+\newcommand\sbullet[1][.5]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
+
 % Defines a standard, compact, indented list for bullet points.
 % Spacing and bullet style are defined here for consistency.
+% https://mirror.apps.cam.ac.uk/pub/tex-archive/macros/latex/contrib/enumitem/enumitem.pdf
 \newcommand{\resumeItemListStart}{
-  \begin{itemize}[leftmargin=0.15in, label=\tiny$\bullet$, topsep=0pt, itemsep=0em, partopsep=0pt, parsep=0pt]
+  \begin{itemize}[leftmargin=0.15in, label=•, topsep=15pt, itemsep=0.4em, partopsep=0pt, parsep=0pt]
 }
 \newcommand{\resumeItemListEnd}{\end{itemize}}
-
-% Creates an alias for the hobby list. It will now use the exact same styling
-% as the standard resume item list, ensuring visual consistency.
-\let\hobbyItemListStart\resumeItemListStart
-\let\hobbyItemListEnd\resumeItemListEnd
 
 
 %----------------------------------------------------------------------------------------
@@ -73,12 +94,9 @@
   \item\small{#1}
 }
 
-% A two-column list item, with a layout consistent with \resumeSubheading.
-% It correctly handles multi-line descriptions.
-% ARGUMENTS: {Description}{Right-aligned text (e.g., Date)}
-\newcommand{\hobbyItem}[2]{
-  \item
-    \begin{tabular*}{\linewidth}[t]{@{}p{0.85\linewidth}@{\extracolsep{\fill}}r@{}}
-      #1 & \textit{#2}
-    \end{tabular*}
-}
+
+%----------------------------------------------------------------------------------------
+%	OTHER
+%----------------------------------------------------------------------------------------
+
+\def\cpp{C\raisebox{0.2ex}{\tiny\textbf{++}}\xspace}

@@ -1,0 +1,17 @@
+% ---------------------------------------------------------
+% _publications.tex.j2 — Renders the publications section
+% ---------------------------------------------------------
+
+((* if publications *))
+\section{\texorpdfstring{\color{andreblue}Publications And Talks}{Publications And Talks}}
+
+\resumeSubHeadingListStart
+
+((* for pub in publications *))
+    \paperSubheading
+        {\normalsize ((( pub.title ))) \textnormal}{((( pub.venue )))}
+        {\textnormal{((( pub.details )))}}{((( pub.date )))}
+((* endfor *))
+
+\resumeSubHeadingListEnd
+((* endif *))

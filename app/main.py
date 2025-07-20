@@ -91,10 +91,7 @@ def main():
     print("🚀 Starting CV generation...\n")
 
     config = load_config()
-    print("\n\n------ USED CONFIG ------ \n\n")
-    print(config)
-    print(CONFIG_FILE)
-    print("\n\n------ USED CONFIG END ------ \n\n")
+
     try:
         settings_cv = config["cv_settings"]
         settings_output = config["output_settings"]

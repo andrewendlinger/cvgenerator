@@ -38,7 +38,7 @@ facet_to_generate = "academia"
 
 # Path to the TOML file containing the textual content of your CV.
 # This includes your work experience, education, skills, projects, etc.
-content_file = "./content/mariecurie_cv.toml"
+content_file = "./content/consulting_cv.toml"
 
 # Path to the Jinja2 LaTeX template file (*.tex.j2).
 # This file defines the visual layout, structure, and style of your CV.
@@ -112,6 +112,6 @@ output_mode = "dump"
 #     For example: "CV_MarieCurie_2025".
 #
 # The script automatically adds the correct file extension.
-base_filename = "CV_MarieCurie_2025"
+base_filename = "CV_AndreWendlinger_2025"
 
 btwnotmock = true
