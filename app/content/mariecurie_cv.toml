@@ -1,4 +1,21 @@
-# Marie Sklodowska Curie's CV
+# Welcome to Your CV's Data File!
+#
+# This file uses TOML (Tom's Obvious, Minimal Language) to manage the content of your CV.
+# Simply edit the text, add, or remove sections to build your own document.
+#
+# HOW TO USE:
+# 1.  Edit the values: Change "Marie Curie" to your name, and so on.
+# 2.  Add an Entry: Copy and paste an entire `[[...]]` block and fill it with your information. The newest entries are typically placed at the top.
+# 3.  Remove an Entry: To prevent an item from appearing on your CV, you can either delete it or comment it out (by adding a '#' at the beginning of each line).
+# 4.  Escape LaTeX Characters: The final CV is a PDF generated via LaTeX.
+#       -> You MUST escape special LaTeX characters with a double backslash (`\\`).
+#       -> For example: write `R&D` as `R\\&D`, `100%` as `100\\%` etc.
+#
+
+# ===================================================================
+#                          PROFILE & SIGNATURE
+#      These are single blocks that appear at the top and bottom.
+# ===================================================================
 
 [profile]
 name = "Marie Sklodowska Curie"
@@ -12,8 +29,18 @@ github = { text = "Nobel Prize Profile", url = "https://www.nobelprize.org/prize
 location = "Paris"
 pdf_name = "SignatureMarieCurie.pdf" # pdf file - has to be inside the /app/assets folder
 
-# ***************
 
+# ===================================================================
+#                 CV SECTIONS WITH MULTIPLE ENTRIES
+#       Each `[[section]]` block below represents one entry.
+#           Add, duplicate, or remove blocks as needed.
+# ===================================================================
+
+# ****************************** EDUCATION *************************************
+#
+# Each `[[education]]` block represents one degree or qualification.
+# The 'details' table is optional and split into a facett of your choice (e.g. 'academia', 'industry' etc.).
+# You can specify the facet that gets used for rendering in the main app/config.toml file.
 
 [[education]]
 degree = "Doctor of Science in Physics"
@@ -76,7 +103,7 @@ details.industry = [
 ]
 
 
-# ***************
+# ****************************** EXPERIENCE *************************************
 
 
 [[experience]]
@@ -127,7 +154,7 @@ details.industry = [
 ]
 
 
-# ***************
+# ****************************** AWARDS *************************************
 
 
 [[awards_and_honors]]
@@ -155,7 +182,7 @@ date = "1903"
 details = "Shared with Pierre Curie and Henri Becquerel in recognition of their joint research on the radiation phenomena discovered by Professor Henri Becquerel."
 
 
-# ***************
+# ****************************** PUBLICATIONS *************************************
 
 
 [[publications]]
@@ -171,7 +198,7 @@ date = "1903"
 details = "Doctoral dissertation presented to the Faculty of Sciences in Paris. Published and widely circulated, forming the basis of modern atomic physics."
 
 
-# ***************
+# ****************************** SKILLS *************************************
 
 
 [[skills]]
@@ -190,7 +217,8 @@ items = ["Piezoelectric Electrometer", "Mobile X-ray Units ('petites Curies')", 
 title = "Languages"
 items = ["Native in Polish", "Fluent in French", "Proficient in German \\& Russian", "Reading knowledge of English"]
 
-# ***************
+
+# ****************************** EXTRACURRICULAR *************************************
 
 
 [[extracurricular]]
